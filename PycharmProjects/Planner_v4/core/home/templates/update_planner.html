@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block start %}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Custom styles to match planner.html */
+    .title-container {
+        background-color: #f06292; /* Light pink */
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .title-container h4 {
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        margin: 0;
+    }
+
+    .form-container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #ec407a; /* Light pink */
+    }
+
+    .form-group textarea, .form-group input {
+        resize: none;
+    }
+
+    .btn-primary {
+        background-color: #f06292; /* Light pink */
+        border-color: #f06292; /* Light pink */
+    }
+
+    .btn-primary:hover {
+        background-color: #e91e63; /* Pink */
+        border-color: #e91e63; /* Pink */
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="title-container">
+                <h4>Update Planner</h4>
+            </div>
+            <div class="form-container card p-3 shadow-lg">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="day">Date</label>
+                        <input type="text" id="day" name="day" class="form-control" value="{{ planner.day }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">MeetingID</label>
+                        <input type="text" id="name" name="name" class="form-control" value="{{ planner.name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Meeting Minute</label>
+                        <textarea id="description" name="description" class="form-control" rows="5">{{ planner.description }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

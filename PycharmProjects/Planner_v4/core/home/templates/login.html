@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8bbd0; /* Light pink background */
+        }
+
+        .login-form {
+            background-color: #fff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .login-form h4 {
+            color: #ec407a; /* Light pink text */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e0e0e0; /* Light grey border */
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .login-form button {
+            background-color: #f06292; /* Light pink button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .login-form button:hover {
+            background-color: #e91e63; /* Pink hover color */
+        }
+
+        .login-form p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ec407a; /* Light pink text */
+        }
+
+        .login-form p a {
+            color: #ec407a; /* Light pink link */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-form p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <title>Planner</title>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="login-form">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success {{ message.tags }} mt-4" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <h4>Login</h4>
+                        <div class="form-group">
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                    <p><a href="{% url 'register' %}">Create an Account.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
